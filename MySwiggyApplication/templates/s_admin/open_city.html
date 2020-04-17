@@ -26,20 +26,8 @@
                         </th>
                     </tr>
                     {{ sf }}
-                    <tr >
-                        <th style="text-align: center;" height="60" >{{ cf.city_name.label }}</th>
-                        <th style="text-align: center">{{ sf.city_name }}</th>
-                       <th>{{ sf.city_name.errors }}</th>}\
-                    </tr>
-                    <tr>
-                       <th style="text-align: center;" height="60" >{{ cf.scity.label }}</th>
-                      <th style="text-align: center">
 
-                           </select>
 
-                        </th>
-                       <th></th>
-                   </tr>
                     <tr>
                         <th colspan="3" style="text-align: center"><button type="submit">Save</button> </th>
                     </tr>
@@ -82,7 +70,7 @@
         <tr>
         <th>
             <table align="center" border="2">
-                <tr bgcolor="yellow">
+                <tr bgcolor="#da70d6">
                     <th style="text-align: center" width="50" height="50">No</th>
                     <th style="text-align: center" width="200">City Name</th>
                     <th style="text-align: center" width="100">Update</th>
@@ -97,13 +85,13 @@
                     <th style="text-align: center" width="100">
 
                       <a href="{% url 'update_city' %}?cno={{ x.city_no }}&cname={{ x.city_name }}">
-                           <img src="{% static 'image/update.png' %}" width="25" height="25">
+                           <img src="{% static 'image/reload (1).png' %}" width="25" height="25">
                        </a>
 
                     </th>
                     <th style="text-align: center" width="100">
                     <a href="{% url 'delete_city' %}?sno={{ x.city_no }}">
-                           <img src="{% static 'image/delete.png' %}" width="25" height="25">
+                           <img src="{% static 'image/trash.png' %}" width="25" height="25">
                       </a>
                     </th>
                 </tr>

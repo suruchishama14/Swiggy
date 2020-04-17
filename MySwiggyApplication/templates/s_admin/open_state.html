@@ -87,13 +87,13 @@
                     <th style="text-align: center" width="100">
 
                         <a href="{% url 'update_state' %}?sno={{ x.state_no }}&sname={{ x.state_name }}">
-                            <img src="{% static 'image/update.png' %}" width="25" height="25">
+                            <img src="{% static 'image/updated.png' %}" width="25" height="25">
                         </a>
 
                     </th>
                     <th style="text-align: center" width="100">
                         <a href="{% url 'delete_state' %}?sno={{ x.state_no }}">
-                            <img src="{% static 'image/delete.png' %}" width="25" height="25">
+                            <img src="{% static 'image/deletes.png' %}" width="25" height="25">
                         </a>
                     </th>
                 </tr>

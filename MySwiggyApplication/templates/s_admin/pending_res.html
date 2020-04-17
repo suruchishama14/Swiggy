@@ -47,10 +47,10 @@
             </td>
             <td>{{ x.restro_type }}</td>
             <th style="text-align: center">
-                <a href="{% url 'approve_res' %}?rno={{ x.restro_id }}"><img src="{% static 'image/.png' %}"></a>
+                <a href="{% url 'approve_res' %}?rno={{ x.restro_id }}"><img src="{% static 'image/seen.png' %}"></a>
             </th>
             <th style="text-align: center">
-                <a href="{% url 'cancel_res' %}?rno={{ x.restro_id }}"><img src="{% static 'image/.png' %}"></a>
+                <a href="{% url 'cancel_res' %}?rno={{ x.restro_id }}"><img src="{% static 'image/garbage.png' %}"></a>
             </th>
         </tr>
         {% endfor %}
