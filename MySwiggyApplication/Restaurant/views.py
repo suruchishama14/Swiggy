@@ -25,13 +25,4 @@ def save_res(request):
     else:
         return render(request,"Restaurant/register.html",{"rf":rf})
 
-def Food(request):
-    return render(request,'Restaurant/food.html',{"rf":FoodForm(),"fdata":Food.objects.all()})
 
-def saveFood(request):
-    rf = FoodForm(request.POST)
-    if rf.is_valid():
-        rf.save()
-        return redirect('Food')
-    else:
-        return render(request, "Restaurant/Food.html", {"rf": rf})

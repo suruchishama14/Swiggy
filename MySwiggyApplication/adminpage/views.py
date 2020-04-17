@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 
-
+from Restaurant.models import RestaurantModel
 from adminpage.forms import StateForm, AreaForm, CityForm, RestaurantTypeForm
 from adminpage.models import AdminLoginModel, StateModel, AreaModel, CityModel, RestaurantTypeModel
 from django.contrib import messages
@@ -85,8 +85,8 @@ def update_city_data(request):
 
 
 def delete_city(request):
-    sno = request.GET.get("cno")
-    CityModel.objects.filter(city_no=sno).delete()
+    cno = request.GET.get("cno")
+    CityModel.objects.filter(city_no=cno).delete()
     return redirect('open_city')
 
 
@@ -101,9 +101,27 @@ def save_area(request):
         return redirect('open_area')
     else:
         return render(request, "s_admin/open_area.html", {"sf": sf})
+def update_area(request):
+    ano = request.GET.get("ano")
+    aname = request.GET.get("aname")
+    d1 = {"ano":ano,"aname":aname}
+    return render(request,"s_admin/open_area.html",{"update_data":d1,"cdata":AreaModel.objects.all()})
+
+def update_area_data(request):
+    ano = request.POST.get("a1")
+    aname = request.POST.get("a2")
+    AreaModel.objects.filter(area_no = ano).update(area_name=aname)
+    return redirect('open_area')
+
+
+def delete_area(request):
+    ano = request.GET.get("cno")
+    AreaModel.objects.filter(city_no=ano).delete()
+    return redirect('open_area')
 
 def open_type(request):
     return render(request, 's_admin/open_type.html', {"sf": RestaurantTypeForm(), "sdata": RestaurantTypeModel.objects.all()})
+
 
 
 def save_type(request):
@@ -113,3 +131,47 @@ def save_type(request):
         return redirect('open_type')
     else:
         return render(request, "s_admin/open_type.html", {"sf": sf})
+def update_type(request):
+    tno = request.GET.get("tno")
+    tname = request.GET.get("tname")
+    d1 = {"tno":tno,"tname":tname}
+    return render(request,"s_admin/open_city.html",{"update_data":d1,"tdata":RestaurantTypeModel.objects.all()})
+
+def update_type_data(request):
+    tno = request.POST.get("t1")
+    tname = request.POST.get("t2")
+    RestaurantTypeModel.objects.filter(type_no = tno).update(type_name=tname)
+    return redirect('open_type')
+
+
+def delete_type(request):
+    tno = request.GET.get("tno")
+    RestaurantTypeModel.objects.filter(type_no=tno).delete()
+    return redirect('open_type')
+
+
+def pending_res(request):
+    rs = RestaurantModel.objects.filter(restro_status='pending')
+    return render(request,"s_admin/pending_res.html",{"data":rs})
+
+
+def approve_res(request):
+    rno = request.GET.get("rno")
+    RestaurantModel.objects.filter(restro_id=rno).update(restro_status='approved')
+    return redirect('admin_home')
+
+
+def cancel_res(request):
+    rno = request.GET.get("rno")
+    RestaurantModel.objects.filter(restro_id=rno).update(restro_status='cancel')
+    return redirect('admin_home')
+
+
+def show_approved_res(request):
+    rs = RestaurantModel.objects.filter(restro_status='approved')
+    return render(request, "s_admin/approved_res.html", {"data": rs})
+
+
+def show_cancel_res(request):
+    rs = RestaurantModel.objects.filter(restro_status='cancel')
+    return render(request, "s_admin/cancel_res.html", {"data": rs})

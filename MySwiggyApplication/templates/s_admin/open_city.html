@@ -85,7 +85,6 @@
                 <tr bgcolor="yellow">
                     <th style="text-align: center" width="50" height="50">No</th>
                     <th style="text-align: center" width="200">City Name</th>
-                    <th style="text-align: center" width="200">city Name</th>
                     <th style="text-align: center" width="100">Update</th>
                     <th style="text-align: center" width="100">Delete</th>
                 </tr>
@@ -94,7 +93,7 @@
                     <tr>
                     <th style="text-align: center" width="50">{{ x.city_no }}</th>
                     <th style="text-align: center" width="200">{{ x.city_name }}</th>
-                    <th style="text-align: center" width="200">{{ x.city.city_name }}</th>
+
                     <th style="text-align: center" width="100">
 
                       <a href="{% url 'update_city' %}?cno={{ x.city_no }}&cname={{ x.city_name }}">

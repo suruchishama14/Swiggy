@@ -14,9 +14,3 @@ class RestaurantModel(models.Model):
     restro_otp = models.IntegerField()
     restro_status = models.CharField(max_length=30,default=False)
 
-class Food(models.Model):
-    id = models.IntegerField(primary_key=True)
-    restro_id = models.ForeignKey(RestaurantModel, on_delete=models.CASCADE)
-    food_name=models.CharField(max_length=30)
-    def __str__(self):
-        return self.restro_id
