@@ -77,7 +77,7 @@
                     <th style="text-align: center" width="100">Delete</th>
                 </tr>
 
-                {% for x in sdata %}
+                {% for x in cdata %}
                     <tr>
                     <th style="text-align: center" width="50">{{ x.city_no }}</th>
                     <th style="text-align: center" width="200">{{ x.city_name }}</th>
@@ -90,7 +90,7 @@
 
                     </th>
                     <th style="text-align: center" width="100">
-                    <a href="{% url 'delete_city' %}?sno={{ x.city_no }}">
+                    <a href="{% url 'delete_city' %}?cno={{ x.city_no }}">
                            <img src="{% static 'image/trash.png' %}" width="25" height="25">
                       </a>
                     </th>
@@ -103,7 +103,7 @@
      {% else %}
 
         <h3 style="text-align: center;font-family: 'Agency FB';font-size: 25px;color: red">
-            Please Do Login
+            City
         </h3>
 
     {% endif %}

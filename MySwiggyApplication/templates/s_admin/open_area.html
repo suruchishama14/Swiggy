@@ -34,7 +34,7 @@
                      </form>
                  {% elif update_data %}
 
-                    <form action="{% url 'update_state_data' %}" method="post">
+                    <form action="{% url 'update_area_data' %}" method="post">
                     {% csrf_token %}
                      <table align="center" border="2" bgcolor="#f5deb3" width="500">
                     <tr>
@@ -77,7 +77,7 @@
                     <th style="text-align: center" width="100">Delete</th>
                 </tr>
 
-                {% for x in sdata %}
+                {% for x in adata %}
                     <tr>
                     <th style="text-align: center" width="50">{{ x.area_no }}</th>
                     <th style="text-align: center" width="200">{{ x.area_name }}</th>
@@ -90,7 +90,7 @@
 
                     </th>
                     <th style="text-align: center" width="100">
-                        <a href="{% url 'delete_state' %}?ano={{ x.area_no }}">
+                        <a href="{% url 'delete_area' %}?ano={{ x.area_no }}">
                             <img src="{% static 'image/deleted.png' %}" width="25" height="25">
                        </a>
                     </th>
