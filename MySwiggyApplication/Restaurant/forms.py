@@ -1,5 +1,6 @@
 from django import forms
-from Restaurant.models import RestaurantModel
+from Restaurant.models import RestaurantModel, FoodModel
+
 
 class RestaurantForm(forms.ModelForm):
     restro_password = forms.CharField(max_length=30,widget=forms.PasswordInput)
@@ -11,3 +12,7 @@ class RestaurantForm(forms.ModelForm):
 class RestroLoginForm(forms.Form):
     contactno = forms.IntegerField()
     password = forms.CharField(max_length=30,widget=forms.PasswordInput)
+class FoodForm(forms.ModelForm):
+    class Meta:
+        model = FoodModel
+        fields = ('food_name',)

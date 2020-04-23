@@ -14,3 +14,9 @@ class RestaurantModel(models.Model):
     restro_otp = models.IntegerField()
     restro_status = models.CharField(max_length=30,default=False)
 
+class FoodModel(models.Model):
+    food_no = models.AutoField(primary_key=True)
+    food_name = models.CharField(max_length=50,unique=True)
+
+    def __str__(self):
+        return self.food_name

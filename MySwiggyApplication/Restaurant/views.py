@@ -42,11 +42,41 @@ def restro_login_check(request):
         else:
             #request.session['status'] = True
             request.session['contact'] = cno
-            return redirect('restro_home')
+            return redirect('open_food')
 
     except RestaurantModel.DoesNotExist:
         return render(request, "Restaurant/login.html", {"rf": RestroLoginForm(),"error":"Invalid User"})
 
 
-def restro_home(request):
-    return render(request,"Restaurant/restro_home.html")
+#def restro_home(request):
+   # return render(request,"Restaurant/restro_home.html")
+def open_food(request):
+    return render(request,'Restaurant/open_Foody.html',{"sf":FoodForm(),"sdata":FoodModel.objects.all()})
+
+def save_food(request):
+    sf = FoodForm(request.POST)
+    if sf.is_valid():
+        sf.save()
+        return redirect('open_food')
+    else:
+        return render(request,"Restaurant/open_Foody.html",{"sf":sf})
+
+
+def update_food(request):
+    sno = request.GET.get("sno")
+    sname = request.GET.get("sname")
+    d1 = {"sno":sno,"sname":sname}
+    return render(request,"Restaurant/open_Foody.html",{"update_data":d1,"sdata":FoodModel.objects.all()})
+
+
+def update_food_data(request):
+    sno = request.POST.get("s1")
+    sname = request.POST.get("s2")
+    FoodModel.objects.filter(food_no = sno).update(food_name=sname)
+    return redirect('open_food')
+
+
+def delete_food(request):
+    sno = request.GET.get("sno")
+    FoodModel.objects.filter(food_no=sno).delete()
+    return redirect('open_food')
