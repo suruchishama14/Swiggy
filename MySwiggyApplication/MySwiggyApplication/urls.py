@@ -20,5 +20,9 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     path('admin/', include("adminpage.urls")),
     path('res/',include("Restaurant.urls")),
+    path('', include("main.urls")),
+    path('offer/',include("Customer.urls")),
+
+
 
 ]

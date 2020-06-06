@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.urls import path,include
-from Customer import views
+from main import views
 
 urlpatterns = [
 
-    path('',views.offermenu,name='offermenu'),
-    ]
+    path('',views.main,name='main'),
+
+]
