@@ -1,19 +1,4 @@
-
 {% extends 'Restaurant/common.html' %}
-{% load crispy_forms_tags %}
- <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Tangerine">
-   {% block css %}
-      <style>
-      .lable{
-          font-family: 'Tangerine', serif;
-    font-size: 22px;
-    text-shadow: 4px 4px 4px #aaa;
-
-
-      }
-      </style>
-      {% endblock %}
 
 {% block common %}
     {% include 'Restaurant/main_menu.html' %}
@@ -22,50 +7,9 @@
     {% csrf_token %}
     <table align="center" border="0">
         <tr><th colspan="2" style="text-align: center;font-size: 30px;color: red">Restaurant Registration</th></tr>
-        <tr>
-            <td class="lable">Restaurant Name </td>
-             <td>
-                {{ rf.restro_name|as_crispy_field }}
-            </td>
-        </tr>
-
-          <tr>
-            <td class="lable">Restaurant Contact </td>
-               <td>
-                {{ rf.restro_contact|as_crispy_field }}
-            </td>
-        </tr>
-           <tr>
-            <td class="lable">Restaurant Email </td>
-               <td>
-                {{ rf.restro_email|as_crispy_field }}
-            </td>
-        </tr>
-           <tr>
-            <td class="lable">Restaurant Area</td>
-               <td>
-                {{ rf.restro_area|as_crispy_field }}
-            </td>
-        </tr>
-         <tr>
-            <td class="lable">Restaurant Type </td>
-               <td>
-                {{ rf.restro_type|as_crispy_field }}
-            </td>
-        </tr>
-          <tr>
-            <td class="lable">Restaurant Password </td>
-               <td>
-                {{ rf.restro_password|as_crispy_field }}
-            </td>
-
-        </tr>
-        <tr>
-            <td></td>
-        <td>
-        <button class="btn btn-success" type="submit">Register</button>
-    </td>
-        </tr>
+        {{ rf }}
+        <tr><th colspan="2" style="text-align: center;">
+        <button type="submit">Register</button> </th></tr>
     </table>
     </form>
 
